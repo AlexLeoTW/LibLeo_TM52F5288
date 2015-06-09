@@ -3,6 +3,8 @@
 
 #include "LCD_Ctrl.h"
 
+void initLcdManager();
+
 char* getBuffer();
 
 void lcdUpdateByChar();

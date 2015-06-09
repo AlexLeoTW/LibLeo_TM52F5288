@@ -1,6 +1,6 @@
 #include "LCD_Manager.h"
 
-char lcdDisplayBuffer[2][16] = {0};
+idata char lcdDisplayBuffer[2][16] = {0};
 char lcdUpdateRow = 0, lcdUpdateColumn = 0;
 
 void initLcdManager()
@@ -19,38 +19,37 @@ void initLcdManager()
 
 char* getBuffer()
 {
-	return &lcdDisplayBuffer;
+	return &lcdDisplayBuffer[0][0];
 }
 
 void lcdUpdateByChar()
 {
-	if (lcdUpdateRow = 0 && lcdUpdateColumn < 16)
+	if (lcdUpdateRow == 0 && lcdUpdateColumn < 16)
 	{
-		writeDR(lcdDisplayBuffer[i][j]);
+		writeDR(lcdDisplayBuffer[lcdUpdateRow][lcdUpdateColumn]);
 		lcdUpdateColumn++;
-		curserRShift();
+		//curserRShift();
 	}
-	else if (lcdUpdateRow = 0 && lcdUpdateColumn == 16)
+	else if (lcdUpdateRow == 0 && lcdUpdateColumn == 16)
 	{
-		writeDR(lcdDisplayBuffer[i][j]);
+		//writeDR(lcdDisplayBuffer[lcdUpdateRow][lcdUpdateColumn]);
 		lcdUpdateColumn = 0;
 		lcdUpdateRow++;
 		moveCurser(1, 0);
 	}
-	else if (lcdUpdateRow = 1 && lcdUpdateColumn < 16)
+	else if (lcdUpdateRow == 1 && lcdUpdateColumn < 16)
 	{
-		writeDR(lcdDisplayBuffer[i][j]);
+		writeDR(lcdDisplayBuffer[lcdUpdateRow][lcdUpdateColumn]);
 		lcdUpdateColumn++;
-		curserRShift();
+		//curserRShift();
 	}
-	else if (lcdUpdateRow = 1 && lcdUpdateColumn == 16)
+	else if (lcdUpdateRow == 1 && lcdUpdateColumn == 16)
 	{
-		writeDR(lcdDisplayBuffer[i][j]);
+		//writeDR(lcdDisplayBuffer[lcdUpdateRow][lcdUpdateColumn]);
 		lcdUpdateColumn = 0;
 		lcdUpdateRow = 0;
 		moveCurser(0, 0);
 	}
-	else 
 }
 
 void lcdUpdate()
