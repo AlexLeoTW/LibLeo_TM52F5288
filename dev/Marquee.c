@@ -1,15 +1,12 @@
 #include "Marquee.h"
 #include "LCD_Manager.h"
 
-#define RIGHT 1
-#define LEFT 0
-
-unsigned char startColumn = 0;
-unsigned char startRow = 0;
-unsigned char endColumn = 0;
-unsigned char endRow = 0;
-unsigned char direction = LEFT;
-char* lcdBuffer;
+idata unsigned char startColumn = 0;
+idata unsigned char startRow = 0;
+idata unsigned char endColumn = 0;
+idata unsigned char endRow = 0;
+idata unsigned char direction = LEFT;
+idata char* lcdBuffer;
 
 void setMarquee(unsigned char startX, unsigned char startY, unsigned char endX, unsigned char endY, unsigned char direct)
 {
