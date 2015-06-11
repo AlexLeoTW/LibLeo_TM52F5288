@@ -1,7 +1,7 @@
 #include "LCD_Manager.h"
 
 idata char lcdDisplayBuffer[2][16] = {0};
-char lcdUpdateRow = 0, lcdUpdateColumn = 0;
+idata char lcdUpdateRow = 0, lcdUpdateColumn = 0;
 
 void initLcdManager()
 {
@@ -66,13 +66,3 @@ void lcdUpdate()
 		writeDR(lcdDisplayBuffer[1][i]);
 	}
 }
-
-/*void setMarquee(int startRow, int startColumn, int endColumn, int endRow, char direction)
-{
-	
-}
-
-void updateMarquee()
-{
-	
-}*/

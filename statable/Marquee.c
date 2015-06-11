@@ -1,5 +1,6 @@
 #include "Marquee.h"
 #include "LCD_Manager.h"
+#include "REG320.h"
 
 idata unsigned char startColumn = 0;
 idata unsigned char startRow = 0;
@@ -20,30 +21,31 @@ void setMarquee(unsigned char startX, unsigned char startY, unsigned char endX, 
 
 void marqueeStep()
 {
+	
 	if (direction == LEFT)
 	{
-		int i=0, j=0;
+		unsigned char i, j=0;
 		for (i=startRow; i<=endRow; i++)
 		{
 			char temp = lcdBuffer[i*16 + startColumn];
-			for (j=startColumn; j<endColumn-1; j++)
+			for (j=startColumn; j<endColumn; j++)
 			{
 				lcdBuffer[i*16 + j] = lcdBuffer[i*16 + j+1];
 			}
 			lcdBuffer[i*16 + endColumn] = temp;
 		}
 	}
-	else
+	else if (direction == RIGHT)
 	{
-		int i=0, j=0;
+		unsigned char i, j=0;
 		for (i=startRow; i<=endRow; i++)
 		{
 			char temp = lcdBuffer[i*16 + endColumn];
-			for (j=endColumn; j>0; j--)
+			for (j=endColumn; j>startColumn; j--)
 			{
 				lcdBuffer[i*16 + j] = lcdBuffer[i*16 + j-1];
 			}
-			lcdBuffer[i*16 + 0] = temp;
+			lcdBuffer[i*16 + startColumn] = temp;
 		}
 	}
 }
